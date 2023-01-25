@@ -1,0 +1,125 @@
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 6500 entries, 0 to 6499
+Data columns (total 16 columns):
+ #   Column               Non-Null Count  Dtype  
+---  ------               --------------  -----  
+ 0   Area                 6500 non-null   float64
+ 1   BoundingBoxArea      6500 non-null   float64
+ 2   ConvexArea           6500 non-null   float64
+ 3   Eccentricity         6500 non-null   float64
+ 4   equivalent_diameter  6500 non-null   float64
+ 5   orientation          6500 non-null   float64
+ 6   MajorAxisLength      6500 non-null   float64
+ 7   MinorAxisLength      6500 non-null   float64
+ 8   MaxIntensity         6500 non-null   float64
+ 9   MinIntensity         6500 non-null   float64
+ 10  MeanIntensity        6500 non-null   float64
+ 11  Perimeter            6500 non-null   float64
+ 12  filled_area          6500 non-null   float64
+ 13  solidity             6500 non-null   float64
+ 14  Porosity             6500 non-null   float64
+ 15  Permeability         6500 non-null   float64
+dtypes: float64(16)
+memory usage: 812.6 KB
+None
+       Area  BoundingBoxArea  ConvexArea  ...  solidity  Porosity  Permeability
+0  2396.750         19255.00    17249.00  ...  0.668120     0.208         10.23
+1  6049.500         47841.00    41345.50  ...  0.605857     0.208         10.23
+2  2413.700         21449.40    17480.20  ...  0.703483     0.208         10.23
+3   470.290          4553.36     3733.12  ...  0.720162     0.208         10.23
+4   592.475          5281.20     4518.20  ...  0.784463     0.208         10.23
+
+[5 rows x 16 columns]
+[]
+['BoundingBoxArea', 'ConvexArea', 'Eccentricity', 'equivalent_diameter', 'orientation', 'MajorAxisLength', 'MinorAxisLength', 'MaxIntensity', 'MinIntensity', 'Perimeter', 'filled_area', 'solidity']
+ColumnTransformer(transformers=[('simpleimputer',
+                                 SimpleImputer(add_indicator=True),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x152eb70359b0>)])
+ColumnTransformer(transformers=[('pipeline',
+                                 Pipeline(steps=[('standardscaler',
+                                                  StandardScaler()),
+                                                 ('simpleimputer',
+                                                  SimpleImputer(add_indicator=True))]),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x152eb70359b0>),
+                                ('onehotencoder',
+                                 OneHotEncoder(handle_unknown='ignore'),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x152eb6a65198>)])
+Pipeline(steps=[('columntransformer',
+                 ColumnTransformer(transformers=[('pipeline',
+                                                  Pipeline(steps=[('standardscaler',
+                                                                   StandardScaler()),
+                                                                  ('simpleimputer',
+                                                                   SimpleImputer(add_indicator=True))]),
+                                                  <sklearn.compose._column_transformer.make_column_selector object at 0x152eb70359b0>),
+                                                 ('onehotencoder',
+                                                  OneHotEncoder(handle_unknown='ignore'),
+                                                  <sklearn.compose._column_transformer.make_column_selector object at 0x152eb6a65198>)])),
+                ('multioutputregressor',
+                 MultiOutputRegressor(estimator=LassoCV(cv=3, eps=0.0001,
+                                                        max_iter=2000,
+                                                        n_alphas=50)))])
+Pipeline(steps=[('columntransformer',
+                 ColumnTransformer(transformers=[('pipeline',
+                                                  Pipeline(steps=[('standardscaler',
+                                                                   StandardScaler()),
+                                                                  ('simpleimputer',
+                                                                   SimpleImputer(add_indicator=True))]),
+                                                  <sklearn.compose._column_transformer.make_column_selector object at 0x152eb70359b0>),
+                                                 ('onehotencoder',
+                                                  OneHotEncoder(handle_unknown='ignore'),
+                                                  <sklearn.compose._column_transformer.make_column_selector object at 0x152eb6a65198>)])),
+                ('multioutputregressor',
+                 MultiOutputRegressor(estimator=RidgeCV(alphas=array([ 0.1,  1. , 10. ]),
+                                                        cv=3,
+                                                        normalize=True)))])
+Pipeline(steps=[('columntransformer',
+                 ColumnTransformer(transformers=[('pipeline',
+                                                  Pipeline(steps=[('standardscaler',
+                                                                   StandardScaler()),
+                                                                  ('simpleimputer',
+                                                                   SimpleImputer(add_indicator=True))]),
+                                                  <sklearn.compose._column_transformer.make_column_selector object at 0x152eb70359b0>),
+                                                 ('onehotencoder',
+                                                  OneHotEncoder(handle_unknown='ignore'),
+                                                  <sklearn.compose._column_transformer.make_column_selector object at 0x152eb6a65198>)])),
+                ('multioutputregressor',
+                 MultiOutputRegressor(estimator=LinearRegression(normalize=True)))])
+Pipeline(steps=[('columntransformer',
+                 ColumnTransformer(transformers=[('simpleimputer',
+                                                  SimpleImputer(add_indicator=True),
+                                                  <sklearn.compose._column_transformer.make_column_selector object at 0x152eb70359b0>)])),
+                ('multioutputregressor',
+                 MultiOutputRegressor(estimator=RandomForestRegressor(max_depth=100,
+                                                                      n_estimators=1400,
+                                                                      random_state=42)))])
+Pipeline(steps=[('columntransformer',
+                 ColumnTransformer(transformers=[('simpleimputer',
+                                                  SimpleImputer(add_indicator=True),
+                                                  <sklearn.compose._column_transformer.make_column_selector object at 0x152eb70359b0>)])),
+                ('multioutputregressor',
+                 MultiOutputRegressor(estimator=GradientBoostingRegressor(criterion='mse',
+                                                                          max_depth=10,
+                                                                          min_samples_leaf=4,
+                                                                          min_samples_split=5,
+                                                                          n_estimators=1200,
+                                                                          random_state=42)))])
+MultiOutputRegressor(estimator=StackingRegressor(estimators=[('Linear',
+                                                              Pipeline(steps=[('columntransformer',
+                                                                               ColumnTransformer(transformers=[('pipeline',
+                                                                                                                Pipeline(steps=[('standardscaler',
+                                                                                                                                 StandardScaler()),
+                                                                                                                                ('simpleimputer',
+                                                                                                                                 SimpleImputer(add_indicator=True))]),
+                                                                                                                <sklearn.compose._column_transformer.make_column_selector object at 0x152eb70359b0>),
+                                                                                                               ('onehoten...
+                                                                                                                SimpleImputer(add_indicator=True),
+                                                                                                                <sklearn.compose._column_transformer.make_column_selector object at 0x152eb70359b0>)])),
+                                                                              ('multioutputregressor',
+                                                                               MultiOutputRegressor(estimator=GradientBoostingRegressor(criterion='mse',
+                                                                                                                                        max_depth=10,
+                                                                                                                                        min_samples_leaf=4,
+                                                                                                                                        min_samples_split=5,
+                                                                                                                                        n_estimators=1200,
+                                                                                                                                        random_state=42)))]))],
+                                                 final_estimator=LinearRegression(normalize=True)))
+
