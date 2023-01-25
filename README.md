@@ -2,7 +2,8 @@
 -----------------------------
 A study done for research:
 
-Stacked Ensemble Machine Learning for Porosity and Absolute Permeability Presiction of Carbonate Rock Plugs
+Stacked Ensemble Machine Learning for Porosity and Absolute Permeability Presiction of Carbonate Rock Plugs.
+
 Ramanzani S. Kalule, PhD Candidate 
 Dr. Hamid Ait Abderrahmane
 Dr. Waleed Alameri
